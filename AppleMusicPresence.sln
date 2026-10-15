@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2A9D312A-427A-4863-885D-BD064CABD951}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppleMusicPresence.Core", "src\AppleMusicPresence.Core\AppleMusicPresence.Core.csproj", "{933B32FA-FD05-4C32-9617-92CB1D712F96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppleMusicPresence", "src\AppleMusicPresence\AppleMusicPresence.csproj", "{37DC8D78-0266-471C-BF4F-494EDED61712}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0BA9F3E2-89CC-450F-A357-ADEE33A29330}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppleMusicPresence.Specs", "tests\AppleMusicPresence.Specs\AppleMusicPresence.Specs.csproj", "{3717BAAB-9C93-4D70-B58B-C5BD80981835}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppleMusicPresence.UiSmoke", "tests\AppleMusicPresence.UiSmoke\AppleMusicPresence.UiSmoke.csproj", "{752BBA45-35A4-48AF-92B0-338A15D2D720}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppleMusicPresence.LiveCheck", "tests\AppleMusicPresence.LiveCheck\AppleMusicPresence.LiveCheck.csproj", "{8B828806-1266-48B5-BEE5-E3542B758B21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppleMusicPresence.Bench", "tests\AppleMusicPresence.Bench\AppleMusicPresence.Bench.csproj", "{07BD1707-8D7A-4282-B31A-2110F6D4C300}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{933B32FA-FD05-4C32-9617-92CB1D712F96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{933B32FA-FD05-4C32-9617-92CB1D712F96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{933B32FA-FD05-4C32-9617-92CB1D712F96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{933B32FA-FD05-4C32-9617-92CB1D712F96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37DC8D78-0266-471C-BF4F-494EDED61712}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37DC8D78-0266-471C-BF4F-494EDED61712}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37DC8D78-0266-471C-BF4F-494EDED61712}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37DC8D78-0266-471C-BF4F-494EDED61712}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3717BAAB-9C93-4D70-B58B-C5BD80981835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3717BAAB-9C93-4D70-B58B-C5BD80981835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3717BAAB-9C93-4D70-B58B-C5BD80981835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3717BAAB-9C93-4D70-B58B-C5BD80981835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{752BBA45-35A4-48AF-92B0-338A15D2D720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{752BBA45-35A4-48AF-92B0-338A15D2D720}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{752BBA45-35A4-48AF-92B0-338A15D2D720}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{752BBA45-35A4-48AF-92B0-338A15D2D720}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B828806-1266-48B5-BEE5-E3542B758B21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B828806-1266-48B5-BEE5-E3542B758B21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B828806-1266-48B5-BEE5-E3542B758B21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B828806-1266-48B5-BEE5-E3542B758B21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07BD1707-8D7A-4282-B31A-2110F6D4C300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07BD1707-8D7A-4282-B31A-2110F6D4C300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07BD1707-8D7A-4282-B31A-2110F6D4C300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07BD1707-8D7A-4282-B31A-2110F6D4C300}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{933B32FA-FD05-4C32-9617-92CB1D712F96} = {2A9D312A-427A-4863-885D-BD064CABD951}
+		{37DC8D78-0266-471C-BF4F-494EDED61712} = {2A9D312A-427A-4863-885D-BD064CABD951}
+		{3717BAAB-9C93-4D70-B58B-C5BD80981835} = {0BA9F3E2-89CC-450F-A357-ADEE33A29330}
+		{752BBA45-35A4-48AF-92B0-338A15D2D720} = {0BA9F3E2-89CC-450F-A357-ADEE33A29330}
+		{8B828806-1266-48B5-BEE5-E3542B758B21} = {0BA9F3E2-89CC-450F-A357-ADEE33A29330}
+		{07BD1707-8D7A-4282-B31A-2110F6D4C300} = {0BA9F3E2-89CC-450F-A357-ADEE33A29330}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,7 @@
+**/bin/
+**/obj/
+.vs/
+.video_agent/
+out/
+*.user
+*.suo
