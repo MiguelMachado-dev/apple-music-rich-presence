@@ -1,0 +1,84 @@
+<Window x:Class="AppleMusicPresence.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Apple Music Presence" Width="500" Height="760" MinWidth="440" MinHeight="520"
+        Background="{StaticResource PageBrush}" Foreground="{StaticResource TextBrush}"
+        FontFamily="Segoe UI" FontSize="14" WindowStartupLocation="CenterScreen"
+        Icon="Assets/app.ico" Closing="OnClosing" StateChanged="OnStateChanged">
+    <DockPanel>
+        <Border DockPanel.Dock="Bottom" Background="{StaticResource PageBrush}" BorderBrush="{StaticResource LineBrush}" BorderThickness="0,1,0,0" Padding="28,16,28,18">
+            <StackPanel>
+                <Button Content="Salvar configuração" Click="SaveSettings" Background="{StaticResource AccentBrush}" Foreground="#201015" BorderBrush="{StaticResource AccentBrush}" FontWeight="SemiBold" AutomationProperties.AutomationId="SaveSettings" Visibility="{Binding IsExpanded, ElementName=SettingsExpander, Converter={StaticResource BoolVisibility}}"/>
+                <TextBlock x:Name="FeedbackText" Foreground="{StaticResource AccentBrush}" FontSize="12" Margin="0,8,0,8" AutomationProperties.LiveSetting="Polite"/>
+                <Button Content="{Binding ToggleLabel}" Click="ToggleSharing" AutomationProperties.AutomationId="ToggleSharing"/>
+                <TextBlock Text="Fechar mantém o app na bandeja, perto do relógio. Para encerrar, use Sair no menu do ícone." FontSize="12" Foreground="{StaticResource MutedBrush}" Margin="0,12,0,0" LineHeight="18"/>
+            </StackPanel>
+        </Border>
+    <ScrollViewer x:Name="ContentScroll" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="28,24,28,24">
+            <Grid Margin="0,0,0,24">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock Text="Apple Music" FontSize="26" FontWeight="SemiBold"/>
+                    <TextBlock Text="Sua trilha sonora, no Discord." Foreground="{StaticResource MutedBrush}" Margin="0,4,0,0"/>
+                </StackPanel>
+                <Border Grid.Column="1" Width="44" Height="44" CornerRadius="12" Background="{StaticResource AccentBrush}">
+                    <Viewbox Margin="12"><Path Fill="#201015" Data="M 10,2 L 21,0 L 21,15 C 21,19 14,20 14,16 C 14,13 18,12 19,13 L 19,5 L 12,6 L 12,18 C 12,22 5,23 5,19 C 5,16 9,15 10,16 Z"/></Viewbox>
+                </Border>
+            </Grid>
+
+            <Border Background="{StaticResource CardBrush}" CornerRadius="14" Padding="20">
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsExpanded, ElementName=SettingsExpander}" Value="True"><Setter Property="Visibility" Value="Collapsed"/></DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <StackPanel>
+                    <TextBlock Text="{Binding PlaybackLabel}" FontSize="11" FontWeight="Bold" Foreground="{StaticResource AccentBrush}" Margin="0,0,0,14"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions><ColumnDefinition Width="88"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                        <Border Width="88" Height="88" CornerRadius="10" Background="#353139" ClipToBounds="True" VerticalAlignment="Top">
+                            <Grid>
+                                <Viewbox Margin="28"><Path Fill="{StaticResource MutedBrush}" Data="M 10,2 L 21,0 L 21,15 C 21,19 14,20 14,16 C 14,13 18,12 19,13 L 19,5 L 12,6 L 12,18 C 12,22 5,23 5,19 C 5,16 9,15 10,16 Z"/></Viewbox>
+                                <Image Source="{Binding Artwork}" Stretch="UniformToFill" AutomationProperties.Name="Capa do álbum atual"/>
+                            </Grid>
+                        </Border>
+                        <StackPanel Grid.Column="1" Margin="16,0,0,0" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding TrackTitle}" FontSize="19" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" MaxHeight="56" ToolTip="{Binding TrackTitle}"/>
+                            <TextBlock Text="{Binding Artist}" Margin="0,6,0,0" TextTrimming="CharacterEllipsis" MaxHeight="40" ToolTip="{Binding Artist}"/>
+                            <TextBlock Text="{Binding Album}" Margin="0,3,0,0" FontSize="12" Foreground="{StaticResource MutedBrush}" TextTrimming="CharacterEllipsis" MaxHeight="34" ToolTip="{Binding Album}"/>
+                        </StackPanel>
+                    </Grid>
+                    <ProgressBar Value="{Binding Progress, Mode=OneWay}" Maximum="100" Height="4" Margin="0,18,0,7" Foreground="{StaticResource AccentBrush}" Background="#444048" BorderThickness="0" AutomationProperties.Name="Progresso da música"/>
+                    <DockPanel><TextBlock Text="{Binding PositionLabel}" FontSize="11" Foreground="{StaticResource MutedBrush}"/><TextBlock Text="{Binding DurationLabel}" FontSize="11" HorizontalAlignment="Right" Foreground="{StaticResource MutedBrush}"/></DockPanel>
+                </StackPanel>
+            </Border>
+
+            <StackPanel Margin="0,22,0,20" AutomationProperties.LiveSetting="Polite">
+                <TextBlock Text="{Binding StatusTitle}" FontWeight="SemiBold" FontSize="16"/>
+                <TextBlock Text="{Binding StatusDetail}" Foreground="{StaticResource MutedBrush}" Margin="0,6,0,0" LineHeight="20"/>
+                <TextBlock Text="{Binding ArtworkWarning}" FontSize="12" Foreground="{StaticResource MutedBrush}"/>
+            </StackPanel>
+
+            <Expander x:Name="SettingsExpander" Header="Configuração" Foreground="{StaticResource TextBrush}" IsExpanded="True" Collapsed="SettingsCollapsed">
+                <StackPanel Margin="0,16,0,0">
+                    <TextBlock Text="APPLICATION ID DO DISCORD" FontSize="11" FontWeight="Bold" Foreground="{StaticResource MutedBrush}" Margin="0,0,0,8"/>
+                    <TextBox x:Name="ApplicationIdBox" MaxLength="20" AutomationProperties.Name="Application ID do Discord" AutomationProperties.AutomationId="ApplicationId"/>
+                    <TextBlock Margin="0,10,0,0" FontSize="12" Foreground="{StaticResource MutedBrush}" LineHeight="18">
+                        <Run Text="1. Abra o portal e clique em New Application."/><LineBreak/>
+                        <Run Text="2. Dê o nome Apple Music ao app."/><LineBreak/>
+                        <Run Text="3. Copie o Application ID e cole acima."/>
+                    </TextBlock>
+                    <Button Content="Abrir portal do Discord ↗" Click="OpenPortal" HorizontalAlignment="Left" Padding="12,8" Margin="0,12,0,14" AutomationProperties.AutomationId="OpenPortal"/>
+                    <CheckBox x:Name="StartupCheckBox" Content="Iniciar com o Windows" AutomationProperties.AutomationId="StartWithWindows"/>
+                    <CheckBox x:Name="ArtworkCheckBox" Content="Buscar capas no catálogo da Apple" AutomationProperties.AutomationId="LookupArtwork"/>
+                    <TextBlock Text="Usa título e artista para encontrar a capa pública. Nenhum login é necessário." FontSize="12" Foreground="{StaticResource MutedBrush}" Margin="20,2,0,16"/>
+                </StackPanel>
+            </Expander>
+
+        </StackPanel>
+    </ScrollViewer>
+    </DockPanel>
+</Window>
