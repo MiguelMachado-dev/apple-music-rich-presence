@@ -1,10 +1,23 @@
 # Desempenho e memória
 
-Estado em 14/10/2026, 22:40. O trabalho está pausado no meio da avaliação das melhorias secundárias.
+Estado em 14/10/2026. As três correções principais foram publicadas na versão 0.1.2. A avaliação das melhorias secundárias continua pausada.
 
 - As três correções principais estão no código-fonte e passaram nos testes.
-- O executável entregue (`out/AppleMusicPresence-win-x64/AppleMusicPresence.exe`) ainda é o v0.1.1 original, que voltou a rodar na bandeja.
-- O código e este relatório estão versionados; o executável otimizado ainda não foi publicado.
+- O executável entregue (`out/AppleMusicPresence-win-x64/AppleMusicPresence.exe`) é o v0.1.2 otimizado e está rodando na bandeja.
+- O código e este relatório estão versionados. As candidatas do bloco 2 não fazem parte desta publicação.
+
+## Publicação 0.1.2
+
+Publicada localmente em 14/10/2026, 22:55, no mesmo caminho do executável anterior. Configurações e entrada de início com o Windows foram conferidas antes e depois, sem alterações.
+
+- SHA-256: `1b393f516d7d94fb6d6f6ab8edb384ec40fe4dd08a4dc7894b1e83df42a140a5`.
+- Backup da versão 0.1.1: `out/backups/0.1.1-20261014-225007/`.
+- Build sem avisos, Specs 32/32 e UiSmoke 6/6 aprovados novamente. As capturas da interface foram inspecionadas.
+- LiveCheck confirmou `Poppy`, a faixa `negative spaces` e a imagem externa pelo RPC do Discord. Não houve inspeção do perfil do Discord.
+- O executável publicado passou por abertura, fechamento para a bandeja e reabertura. A amostra desse cenário registrou aberturas externas da janela e reprodução mista; foi excluída da comparação de desempenho.
+- Evidências e referência das configurações: `out/release-0.1.2/`. `installed.json` registra versão, checksum e preservação das preferências; `installed-memory.txt` guarda a medição da instância instalada.
+
+O teste prolongado de 35 minutos e a avaliação das candidatas secundárias continuam pendentes. Os resultados do bloco 1 abaixo continuam sendo a comparação entre versões.
 
 Os dados brutos, binários de cada variante e scripts de investigação ficam em `out/perf/`, que é local e ignorado pelo Git. Este arquivo resume o que eles mostram. Não apague `out/perf/`: o executável de referência e os dados não existem em outro lugar.
 
@@ -24,7 +37,7 @@ Resultado no código atual, bloco 1 (mediana de 5 execuções, v0 com 4, mesma m
 | Bytes privados (commit), só na bandeja | 225,8 MB | 26,3 MB | −88% |
 | Conjunto de trabalho total, só na bandeja | 342,4 MB | 122,1 MB | inclui DLLs compartilhadas |
 | Memória após abrir e esconder a janela | 215,4 MB | 51,6 MB | −76% |
-| Crescimento contínuo tocando (janela de 60 s) | +19,4 MB/min | ≈0 | vazamento eliminado |
+| Crescimento contínuo tocando (janela de 60 s) | +19,4 MB/min | ≈0 | crescimento não observado nessa janela |
 | Pronto para uso após iniciar | 554 ms | 197 ms | −64% |
 | CPU nos primeiros 10 s | 1.391 ms | 813 ms | −42% |
 | Primeira abertura da janela (visível) | 97 ms | 410 ms | **mais lenta** |
@@ -267,7 +280,7 @@ RenderOptions.ProcessRenderMode = RenderMode.SoftwareOnly;
 6. Aplicar as aprovadas e publicar uma variante final em `out/perf/variants/final`.
 7. Soaks de 35 min com `--open-at 60` e contadores: final, v0.1.1 e, se o soak indicar, final com `HeapHardLimit`.
 8. Rodar Specs, UiSmoke e LiveCheck de novo. LiveCheck exige o app de bandeja fechado e música tocando.
-9. Subir `<Version>` em `src/AppleMusicPresence/AppleMusicPresence.csproj` (ainda é 0.1.1, a mesma do executável antigo). Publicar com `.\scripts\Publish.ps1 -OutputDirectory out\staging` e substituir:
+9. Para uma próxima publicação, subir `<Version>` em `src/AppleMusicPresence/AppleMusicPresence.csproj` (atualmente 0.1.2). Publicar com `.\scripts\Publish.ps1 -OutputDirectory out\staging` e substituir:
    1. Faça backup do executável atual.
    2. Feche só o app (confira o caminho).
    3. Copie para `out\AppleMusicPresence-win-x64\`.
