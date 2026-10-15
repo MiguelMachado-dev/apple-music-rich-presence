@@ -49,7 +49,7 @@ Para uma publicação menor que utiliza o [.NET 8 Desktop Runtime](https://dotne
 
 Mantenha o executável em um local fixo antes de ativar **Iniciar com o Windows**. Se mover o arquivo, desative e ative novamente a opção para atualizar o caminho.
 
-O executável é publicado sem compressão: ocupa ~180 MB em disco, mas as bibliotecas são lidas direto do arquivo em vez de copiadas para a memória. No código atual, o app usa ~20 MB de memória privada só na bandeja (coluna **Memória** do Gerenciador de Tarefas) e ~50 MB depois de abrir a janela. O executável v0.1.1 publicado em 14/10, ainda compactado, usava ~150 MB e crescia enquanto a música tocava. Método, resultados e próximos passos em [docs/DESEMPENHO.md](docs/DESEMPENHO.md).
+Desde a versão 0.1.2, o executável é publicado sem compressão: ocupa ~180 MiB em disco, e as bibliotecas são lidas direto do arquivo em vez de copiadas para a memória. Nos benchmarks, o app usa ~20 MiB de memória privada só na bandeja (coluna **Memória** do Gerenciador de Tarefas) e ~50 MiB depois de abrir a janela. O executável v0.1.1 publicado em 14/10, ainda compactado, usava ~150 MiB e crescia enquanto a música tocava. Método, resultados e próximos passos em [docs/DESEMPENHO.md](docs/DESEMPENHO.md).
 
 ## Validação
 

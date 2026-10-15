@@ -10,7 +10,7 @@
     <AssemblyName>AppleMusicPresence</AssemblyName>
     <Product>Apple Music Presence</Product>
     <Description>Apple Music no Discord, direto da bandeja do Windows.</Description>
-    <Version>0.1.1</Version>
+    <Version>0.1.2</Version>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../AppleMusicPresence.Core/AppleMusicPresence.Core.csproj" />
